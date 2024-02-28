@@ -33,8 +33,13 @@ void preOrderTraversal(node *root){
 
     }
 }
-void postOrderTraversal(){
-
+void postOrderTraversal(node *root){
+    if (root!=NULL)
+    {
+        postOrderTraversal(root->left);
+        postOrderTraversal(root->right);
+        cout<<root->data<<"->";
+    }
 }
 
 int main()
@@ -64,6 +69,9 @@ int main()
 
     cout<<"\n*** Pre-Order Traversal ***\n";
     preOrderTraversal(n1);
+    cout<<"\n";
+    cout<<"\n*** Post-Order Traversal ***\n";
+    postOrderTraversal(n1);
     cout<<"\n";
     return 0;
 }
