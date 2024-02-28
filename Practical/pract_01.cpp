@@ -128,8 +128,12 @@ void remove(){
             n->next = n1->next;
             free(n1);
             break;
+        }   
+        else {
+            cout<<"\nRecord doesn't exist!";
         }
     }
+
 }
 int main(){
     
