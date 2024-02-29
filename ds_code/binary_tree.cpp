@@ -15,14 +15,6 @@ node *create(int data){
     n->right = NULL;
     return(n);
 }
-void print(node *root){
-    if (root!=NULL)
-    {
-        cout<<root->data<<"->";
-        print(root->left);
-        print(root->right);
-    }
-}
 
 void preOrderTraversal(node *root){
     if (root!=NULL)
@@ -39,6 +31,14 @@ void postOrderTraversal(node *root){
         postOrderTraversal(root->left);
         postOrderTraversal(root->right);
         cout<<root->data<<"->";
+    }
+}
+void inOrderTraversal(node *root){
+    if (root != NULL)
+    {
+        inOrderTraversal(root->left);
+        cout<<root->data<<"->";
+        inOrderTraversal(root->right);
     }
 }
 
@@ -72,6 +72,9 @@ int main()
     cout<<"\n";
     cout<<"\n*** Post-Order Traversal ***\n";
     postOrderTraversal(n1);
+    cout<<"\n";
+    cout<<"\n*** In-Order Traversal ***\n";
+    inOrderTraversal(n1);
     cout<<"\n";
     return 0;
 }
