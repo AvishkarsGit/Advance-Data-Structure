@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 typedef struct node{
     int data;
     struct node *left;
@@ -14,43 +15,68 @@ node *create(int data){
     n->right = NULL;
     return(n);
 }
-node *insert(int value){
-    node *root;
-    root = create(value);
+node *insert(node *root,int data){
     if (root == NULL)
     {
+        root = create(data);
         return root;
     }
 
-    if (value < root->data)
+    if (data < root->data)
     {
-        root->left = create(value);
+        root->left = insert(root->left,data);
     }
-    else if (value > root->data)
+    else if (data > root->data)
     {
-        root->right = create(value);
+        root->right = insert(root->right,data);
     }
 
     return root;
 }
-int main(){
-
-    node *root;
-    int n,x;
-    cout<<"\nHow much nodes do you wants to add:";
-    cin>>n;
-    for (int i = 0; i<n;i++){
-        if(i == 0){
-            cout<<"\nEnter root node:";
-            cin>>x;
-            root = insert(x);     
-        }
-        else {
-            cout<<"\nEnter child "<<(i+1)<<" :";\
-            cin>>x;
-            root = insert(x);
-        }
+void preOrderTraversal(node *root){
+    if (root!=NULL)
+    {
+        cout<<root->data<<"->";
+        preOrderTraversal(root->left);
+        preOrderTraversal(root->right);
     }
     
+}
+void inOrderTraversal(node *root){
+    if (root != NULL) {
+        inOrderTraversal(root->left);
+        cout<<root->data<<"->";
+        inOrderTraversal(root->right);
+    }
+}
+void postOrderTraversal(node *root){
+    if (root !=NULL)
+    {
+        postOrderTraversal(root->left);
+        postOrderTraversal(root->right);
+        cout<<root->data<<"->";
+    }
+}
+int main(){
+
+    node *root=NULL;
+    int n,x;
+    char choice;
+    do{
+        cout<<"\nEnter node element to insert into tree :";
+        cin>>x;
+        root = insert(root,x);
+
+
+        cout<<"\nDo you want to add another node:(y/n):";
+        cin>>choice;
+
+
+    }while(choice == 'y' || choice == 'Y');
+    preOrderTraversal(root);
+    cout<<"\n\n";
+    inOrderTraversal(root);
+    cout<<"\n\n";
+    postOrderTraversal(root);
     return 0;
 }
