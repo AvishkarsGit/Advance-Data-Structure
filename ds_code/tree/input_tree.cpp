@@ -15,6 +15,7 @@ node *create(int data){
     n->right = NULL;
     return(n);
 }
+
 node *insert(node *root,int data){
     if (root == NULL)
     {
@@ -33,30 +34,38 @@ node *insert(node *root,int data){
 
     return root;
 }
-void preOrderTraversal(node *root){
-    if (root!=NULL)
-    {
-        cout<<root->data<<"->";
-        preOrderTraversal(root->left);
-        preOrderTraversal(root->right);
-    }
+void preOrderTraversal(node *root)
+{
     
-}
-void inOrderTraversal(node *root){
-    if (root != NULL) {
-        inOrderTraversal(root->left);
-        cout<<root->data<<"->";
-        inOrderTraversal(root->right);
-    }
-}
-void postOrderTraversal(node *root){
-    if (root !=NULL)
+    if (root == NULL)
     {
-        postOrderTraversal(root->left);
-        postOrderTraversal(root->right);
-        cout<<root->data<<"->";
+        return;
     }
+    cout<<root->data<<"->";
+    preOrderTraversal(root->left);
+    preOrderTraversal(root->right);
 }
+
+void inOrderTraversal(node *root){
+    if (root == NULL)
+    {
+        return;
+    }
+    inOrderTraversal(root->left);
+    cout<<root->data<<"->";
+    inOrderTraversal(root->right);
+}
+void postOrderTraversal(node *root)
+{
+    if(root == NULL){
+        return;
+    }
+    postOrderTraversal(root->left);
+    postOrderTraversal(root->right);
+    cout<<root->data<<"->";
+}
+
+
 int main(){
 
     node *root=NULL;
@@ -73,10 +82,13 @@ int main(){
 
 
     }while(choice == 'y' || choice == 'Y');
+    
+    cout<<"\n***** Pre Order Traversal **********\n";
     preOrderTraversal(root);
-    cout<<"\n\n";
+    cout<<"\n***** In Order Traversal **********\n";
     inOrderTraversal(root);
-    cout<<"\n\n";
+    cout<<"\n***** Post Order Traversal **********\n";
     postOrderTraversal(root);
+    cout<<"\n";
     return 0;
 }

@@ -28,7 +28,7 @@ node *create(){
     return root;
 }
 
-node *insert_chapter(node *root,string chapter_name, int chapter_no){
+node *insert(node *root,string chapter_name, int chapter_no){
     if (root == NULL)
     {
         return create();
