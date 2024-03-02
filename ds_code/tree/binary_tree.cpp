@@ -88,13 +88,13 @@ int main()
        / \   /  \
       40 50 60  70
     */
-    node *n1 = create(10);
-    node *n2 = create(20);
-    node *n3 = create(30);
-    node *n4 = create(40);
-    node *n5 = create(50);
-    node *n6 = create(60);
-    node *n7 = create(70);
+    node *n1 = create(1);
+    node *n2 = create(2);
+    node *n3 = create(3);
+    node *n4 = create(4);
+    node *n5 = create(5);
+    node *n6 = create(6);
+    node *n7 = create(7);
     
     // link
     n1->left = n2;

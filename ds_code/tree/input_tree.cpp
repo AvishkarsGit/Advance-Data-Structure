@@ -65,6 +65,32 @@ void postOrderTraversal(node *root)
     cout<<root->data<<"->";
 }
 
+void printSpaces(int n) {
+    for (int i = 0; i < n; i++)
+        printf(" ");
+}
+
+// Function to print the tree nodes in the specified pattern
+void printTree(node* root, int space) {
+    // Base case
+    if (root == NULL)
+        return;
+    
+    // Increase distance between levels
+    space += 5;
+
+    // Process right child first
+    printTree(root->right, space);
+    
+    // Print current node after space
+    printf("\n");
+    printSpaces(space);
+    printf("%d", root->data);
+
+    // Process left child
+    printTree(root->left, space);
+}
+
 
 int main(){
 
@@ -82,7 +108,8 @@ int main(){
 
 
     }while(choice == 'y' || choice == 'Y');
-    
+    cout<<"****** Your generated binary tree ******\n";
+    printTree(root,0);
     cout<<"\n***** Pre Order Traversal **********\n";
     preOrderTraversal(root);
     cout<<"\n***** In Order Traversal **********\n";
