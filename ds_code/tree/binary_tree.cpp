@@ -6,7 +6,6 @@ typedef struct node{
     struct node *left;
     struct node *right;
 }node;
-
 node *create(int data){
     node *n;
     n = (node*)malloc(sizeof(node));
@@ -105,8 +104,6 @@ int main()
     n3->right = n7;
 
 
-    cout<<"****** Your generated binary tree ******\n";
-    printTree(n1,0);
     cout<<"\n***** Pre Order Traversal **********\n";
     preOrderTraversal(n1);
     cout<<"\n***** In Order Traversal **********\n";
