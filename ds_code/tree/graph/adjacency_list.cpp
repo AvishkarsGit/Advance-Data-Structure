@@ -1,19 +1,39 @@
 #include<iostream>
-#include<vector>
+#include<list>
 using namespace std;
-class Edge
+class Graph
 {
-    int src,dest;
+    int v;
+    //array of list
+    list<int> *l;
     public:
-        Edge(int s,int d)
+        Graph(int v)
         {
-            this->src = s;
-            this->dest = d;
+            this->v = v;
+            l = new list<int>[v];
+        }
+        void add(int src,int dest){
+            l[src].push_back(dest);
+            l[dest].push_back(src);
+        }
+        void print(){
+            for(int i = 0;i<v;i++){
+                cout<<"Vertex "<<i<<"-> {";
+                for(int nbr:l[i]){
+                    cout<<""<<nbr<<","<<"";
+                }
+                cout<<"}"<<endl;
+            }
         }
 };
 int main(){
-    int v = 4;
+    
+    Graph g(4);
+    g.add(0,1);
+    g.add(0,2);
+    g.add(1,2);
+    g.add(2,3);
 
-    vector<Edge> graph;
+    g.print();
     return 0;
 }
