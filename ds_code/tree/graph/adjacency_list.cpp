@@ -23,7 +23,7 @@ class Edge{
 void createGraph(vector<Edge> graph[]){
     
     graph[0].push_back(Edge(0,2));
-    
+
     graph[1].push_back(Edge(1,2));
     graph[1].push_back(Edge(1,3));
 
