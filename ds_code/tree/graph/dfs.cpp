@@ -17,31 +17,21 @@ class Edge {
             return dest;
         }
 };
-void createGraph(vector<Edge> graph[]){
+void createGraph(vector<Edge> graph[],int v){
 
-    graph[0].push_back(Edge(0,1));
-    graph[0].push_back(Edge(0,2));
-    
-    graph[1].push_back(Edge(1,0));
-    graph[1].push_back(Edge(1,3));
+        int w,to;
+        for(int i = 0;i<v;i++){;
+            int edges;
+            cout<<"How much Edges are for vertext ( "<<i<<" ) : ";
+            cin>>edges;
 
-    graph[2].push_back(Edge(2,0));
-    graph[2].push_back(Edge(2,4));
-
-    graph[3].push_back(Edge(3,1));
-    graph[3].push_back(Edge(3,4));
-    graph[3].push_back(Edge(3,5));
-
-    graph[4].push_back(Edge(4,2));
-    graph[4].push_back(Edge(4,3));
-    graph[4].push_back(Edge(4,5));
-
-    graph[5].push_back(Edge(5,3));
-    graph[5].push_back(Edge(5,4));
-    graph[5].push_back(Edge(5,6));
-
-    graph[6].push_back(Edge(6,5));
-   
+            for (int j = 0;j<edges;j++){
+                cout<<"Enter destination "<< i << " to  :";
+                cin>>to;
+                graph[i].push_back(Edge(i,to));
+            }.
+                                
+        }
 }
 void dfs(vector<Edge> graph[],int current,bool visited[]){
     
@@ -67,13 +57,13 @@ void printGraph(vector<Edge> graph[],int v){
 
 int main()
 {
-    int v=7;
+    int v=5;
     vector<Edge> graph[v];
 
     createGraph(graph);
     printGraph(graph,v);
     bool visited[v];
-    dfs(graph,0,visited);
+    dfs(graph,1,visited);
     cout<<endl;
     return 0;
 }
